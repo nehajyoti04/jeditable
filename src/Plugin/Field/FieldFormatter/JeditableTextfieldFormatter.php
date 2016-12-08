@@ -55,6 +55,7 @@ class JeditableTextfieldFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = array();
 
+    dpm("hello");
     // The ProcessedText element already handles cache context & tag bubbling.
     // @see \Drupal\filter\Element\ProcessedText::preRenderText()
     foreach ($items as $delta => $item) {
@@ -81,15 +82,17 @@ class JeditableTextfieldFormatter extends FormatterBase {
 //
 //
 //      if (user_access('use jeditable')) {
-        $elements[$delta]['#attached'] = array(
-          'js' => array(
-            $path . '/jquery.jeditable.mini.js',
-            $path . '/drupal_jeditable.js',
-          ),
-          'css' => array(
-            $path . '/jeditable.css',
-          ),
-        );
+    $elements[$delta]['#attached']['library'][] = 'jeditable/jeditable.admin';
+
+//        $elements[$delta]['#attached'] = array(
+//          'js' => array(
+//            $path . '/jquery.jeditable.mini.js',
+//            $path . '/drupal_jeditable.js',
+//          ),
+//          'css' => array(
+//            $path . '/jeditable.css',
+//          ),
+//        );
 //      }
 //    }
 //

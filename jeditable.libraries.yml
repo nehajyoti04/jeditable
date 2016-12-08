@@ -4,8 +4,8 @@ jeditable.admin:
     theme:
       css/jeditable.css: {}
   js:
-    jquery.jeditable.mini.js: {}
-    drupal_jeditable.js: {}
+    js/jquery.jeditable.mini.js: {}
+    js/drupal_jeditable.js: {}
   dependencies:
     - core/jquery
     - core/drupal
