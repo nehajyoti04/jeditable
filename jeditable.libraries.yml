@@ -1,0 +1,16 @@
+jeditable.admin:
+  version: VERSION
+  css:
+    theme:
+      css/jeditable.css: {}
+  js:
+    jquery.jeditable.mini.js: {}
+    drupal_jeditable.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+
+
+
+

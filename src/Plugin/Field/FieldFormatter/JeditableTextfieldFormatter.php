@@ -81,15 +81,15 @@ class JeditableTextfieldFormatter extends FormatterBase {
 //
 //
 //      if (user_access('use jeditable')) {
-//        $elements[$delta]['#attached'] = array(
-//          'js' => array(
-//            $path . '/jquery.jeditable.mini.js',
-//            $path . '/drupal_jeditable.js',
-//          ),
-//          'css' => array(
-//            $path . '/jeditable.css',
-//          ),
-//        );
+        $elements[$delta]['#attached'] = array(
+          'js' => array(
+            $path . '/jquery.jeditable.mini.js',
+            $path . '/drupal_jeditable.js',
+          ),
+          'css' => array(
+            $path . '/jeditable.css',
+          ),
+        );
 //      }
 //    }
 //
