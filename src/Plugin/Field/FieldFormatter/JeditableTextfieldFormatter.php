@@ -67,7 +67,17 @@ class JeditableTextfieldFormatter extends FormatterBase {
       );
     }
 
-//    foreach ($items as $delta => $item) {
+    $theme = array(
+      '#theme' =>'jeditable_formatter_jeditable',
+      );
+return $theme;
+    $theme = [
+      '#theme' => 'jeditable_formatter_jeditable',
+      ];
+    $render = $theme;
+    dpm("theme");
+    dpm($render);
+    foreach ($items as $delta => $item) {
 //      $field_delta = isset($display['views_field']) ? $display['views_field']->options['delta_offset'] + $delta : $delta;
 //      $elements[$delta] = array(
 //        '#markup' => theme('jeditable_formatter_jeditable', array(
@@ -94,7 +104,7 @@ class JeditableTextfieldFormatter extends FormatterBase {
 //          ),
 //        );
 //      }
-//    }
+    }
 //
 //
 //    $element['trim_length'] = array(
