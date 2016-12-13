@@ -64,8 +64,10 @@ class JeditableTextfieldFormatter extends FormatterBase {
 
 
 
-//    foreach ($this->getEntitiesToView($items, $langcode) as $delta => $entity) {
-//      if ($entity->id()) {
+    foreach ($this->getEntitiesToView($items, $langcode) as $delta => $entity) {
+      if ($entity->id()) {
+        dpm("for each id");
+        dpm($entity->id());
 //        $elements[$delta] = array(
 //          '#plain_text' => $entity->id(),
 //          // Create a cache tag entry for the referenced entity. In the case
@@ -75,8 +77,8 @@ class JeditableTextfieldFormatter extends FormatterBase {
 //            'tags' => $entity->getCacheTags(),
 //          ),
 //        );
-//      }
-//    }
+      }
+    }
 
 
 
@@ -169,5 +171,6 @@ class JeditableTextfieldFormatter extends FormatterBase {
 
     return $elements;
   }
+
 
 }
