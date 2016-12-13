@@ -1,0 +1,14 @@
+jeditable.ajax_save:
+  path: '/jeditable/ajax/save'
+  defaults:
+    _controller: '\Drupal\jeditable\Controller\JeditableAjax::jeditable_ajax_save'
+  requirements:
+    _access: 'TRUE'
+
+
+#age_checker.agegate:
+#  path: '/age-gate'
+#  defaults:
+#    _controller: '\Drupal\age_checker\Controller\AgeCheckerAgeGate::age_checker_template'
+#  requirements:
+#    _access: 'TRUE'

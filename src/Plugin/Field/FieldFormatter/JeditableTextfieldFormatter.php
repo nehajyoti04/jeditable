@@ -104,7 +104,7 @@ class JeditableTextfieldFormatter extends FormatterBase {
       $elements[$delta] = array(
         '#type' => 'processed_text',
 //        '#text' => $item->value,
-      '#prefix' => '<span class="jeditable jeditable-textfield">',
+      '#prefix' => '<span id="entity_type-test_id-test_field_name-test_widget_name" class="jeditable jeditable-textfield">',
         '#text' =>  $item->value,
         '#suffix' => '</span>',
         '#format' => $item->format,
