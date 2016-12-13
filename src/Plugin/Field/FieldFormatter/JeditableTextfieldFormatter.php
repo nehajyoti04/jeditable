@@ -97,15 +97,16 @@ class JeditableTextfieldFormatter extends FormatterBase {
 //      dpm("item");
 //      dpm($item->getFieldDefinition());
 
-      $markup = '<span class="jeditable jeditable-textfield">' . $item->value. '</span>';
-      $item->value = "hello";
+//      $markup = '<span class="jeditable jeditable-textfield">' . $item->value. '</span>';
+//      $item->value = "hello";
 //      $markup = '<div id="test" class="jeditable jeditable-textfield">' . $item->value. '</div>';
 //      $markup = "<span class='hello'> hello123 </span>";
       $elements[$delta] = array(
         '#type' => 'processed_text',
 //        '#text' => $item->value,
-      '#prefix' => '<span class="hello"></span>',
-        '#text' => '<span class="jeditable jeditable-textfield">' . $item->value. '</span>',
+      '#prefix' => '<span class="jeditable jeditable-textfield">',
+        '#text' =>  $item->value,
+        '#suffix' => '</span>',
         '#format' => $item->format,
         '#langcode' => $item->getLangcode(),
       );
