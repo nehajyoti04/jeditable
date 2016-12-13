@@ -55,28 +55,77 @@ class JeditableTextfieldFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = array();
 
-    dpm("hello");
+
+//    $recursive_render_id = $items->getFieldDefinition()->getTargetEntityTypeId()
+//      . $items->getFieldDefinition()->getTargetBundle()
+//      . $items->getName()
+//      . $entity->id();
+
+
+
+
+//    foreach ($this->getEntitiesToView($items, $langcode) as $delta => $entity) {
+//      if ($entity->id()) {
+//        $elements[$delta] = array(
+//          '#plain_text' => $entity->id(),
+//          // Create a cache tag entry for the referenced entity. In the case
+//          // that the referenced entity is deleted, the cache for referring
+//          // entities must be cleared.
+//          '#cache' => array(
+//            'tags' => $entity->getCacheTags(),
+//          ),
+//        );
+//      }
+//    }
+
+
+
+//    $elements[$delta] = [
+//      '#type' => 'inline_template',
+//      '#template' => '{{ value|nl2br }}',
+//      '#context' => ['value' => $item->value],
+//    ];
+
+
+
+
     // The ProcessedText element already handles cache context & tag bubbling.
     // @see \Drupal\filter\Element\ProcessedText::preRenderText()
+//    return "inside theme function--- milstone 1 of jeditable done.";
+//    return '<span id="' . $entity_type . '-' . $id . '-' . $field['field_name'] . '-' . $widget_type . '-' . $variables['delta'] . '" class="jeditable jeditable-textfield">' . $element['value'] . '</span>';
     foreach ($items as $delta => $item) {
+//      dpm("item");
+//      dpm($item->getFieldDefinition());
+
+      $markup = '<span class="jeditable jeditable-textfield">' . $item->value. '</span>';
+      $item->value = "hello";
+//      $markup = '<div id="test" class="jeditable jeditable-textfield">' . $item->value. '</div>';
+//      $markup = "<span class='hello'> hello123 </span>";
       $elements[$delta] = array(
         '#type' => 'processed_text',
-        '#text' => $item->value,
+//        '#text' => $item->value,
+      '#prefix' => '<span class="hello"></span>',
+        '#text' => '<span class="jeditable jeditable-textfield">' . $item->value. '</span>',
         '#format' => $item->format,
         '#langcode' => $item->getLangcode(),
       );
     }
 
+//    return "hello123";
     $theme = array(
       '#theme' =>'jeditable_formatter_jeditable',
       );
-return $theme;
+//    dpm("theme 1");
+//    dpm($theme);
+//return $theme;
     $theme = [
       '#theme' => 'jeditable_formatter_jeditable',
       ];
     $render = $theme;
-    dpm("theme");
-    dpm($render);
+//    dpm("theme");
+//    dpm($render);
+//    dpm("elements");
+//    dpm($elements);
     foreach ($items as $delta => $item) {
 //      $field_delta = isset($display['views_field']) ? $display['views_field']->options['delta_offset'] + $delta : $delta;
 //      $elements[$delta] = array(
