@@ -61,13 +61,18 @@ class JeditableTextfieldFormatter extends FormatterBase {
 //      . $items->getName()
 //      . $entity->id();
 
+//
+//dpm("taget bundle type");
+//    dpm($items->getFieldDefinition()->getTargetBundle());
+//    dpm("target entity type id");
+//    dpm($items->getFieldDefinition()->getTargetEntityTypeId());
+//    dpm("item get name ");
+//    dpm($items->getName());
 
-
-
-    foreach ($this->getEntitiesToView($items, $langcode) as $delta => $entity) {
-      if ($entity->id()) {
-        dpm("for each id");
-        dpm($entity->id());
+//    foreach ($this->getEntitiesToView($items, $langcode) as $delta => $entity) {
+//      if ($entity->id()) {
+//        dpm("for each id");
+//        dpm($entity->id());
 //        $elements[$delta] = array(
 //          '#plain_text' => $entity->id(),
 //          // Create a cache tag entry for the referenced entity. In the case
@@ -77,8 +82,8 @@ class JeditableTextfieldFormatter extends FormatterBase {
 //            'tags' => $entity->getCacheTags(),
 //          ),
 //        );
-      }
-    }
+//      }
+//    }
 
 
 
@@ -96,9 +101,36 @@ class JeditableTextfieldFormatter extends FormatterBase {
 //    return "inside theme function--- milstone 1 of jeditable done.";
 //    return '<span id="' . $entity_type . '-' . $id . '-' . $field['field_name'] . '-' . $widget_type . '-' . $variables['delta'] . '" class="jeditable jeditable-textfield">' . $element['value'] . '</span>';
     foreach ($items as $delta => $item) {
+
+
+//      dpm("taget bundle type");
+//      dpm($item->getFieldDefinition()->getTargetBundle());
+//      dpm("target entity type");
+//      dpm($item->getFieldDefinition()->getTargetEntityTypeId());
+//      dpm("item get name ");
+//      dpm($items->getName());
+//      dpm("widget");
+//      dpm($item->getFieldDefinition()->getType());
+
+      $bundle = $item->getFieldDefinition()->getTargetBundle();
+      $entity_type = $item->getFieldDefinition()->getTargetEntityTypeId();
+      $field_name = $items->getName();
+      $widget = $item->getFieldDefinition()->getType();
+
+
+
+//      dpm("ID");
+//      dpm($item->getFieldDefinition()->getId());
+
+
+
 //      dpm("item");
 //      dpm($item->getFieldDefinition());
 
+//      return '<span id="' . $entity_type . '-' . $id . '-' . $field['field_name'] . '-' .
+//      $widget_type . '-' . $variables['delta'] . '" class="jeditable jeditable-textfield">'
+      $id = "test_id";
+      $prefix = '<span id = "'.$entity_type . '-' .$id. '-' .$field_name. '-'.$widget .'-'.$delta.'" class="jeditable jeditable-textfield">';
 //      $markup = '<span class="jeditable jeditable-textfield">' . $item->value. '</span>';
 //      $item->value = "hello";
 //      $markup = '<div id="test" class="jeditable jeditable-textfield">' . $item->value. '</div>';
@@ -106,7 +138,8 @@ class JeditableTextfieldFormatter extends FormatterBase {
       $elements[$delta] = array(
         '#type' => 'processed_text',
 //        '#text' => $item->value,
-      '#prefix' => '<span id="entity_type-test_id-test_field_name-test_widget_name" class="jeditable jeditable-textfield">',
+//      '#prefix' => '<span id="entity_type-test_id-test_field_name-test_widget_name" class="jeditable jeditable-textfield">',
+        '#prefix' => $prefix,
         '#text' =>  $item->value,
         '#suffix' => '</span>',
         '#format' => $item->format,
