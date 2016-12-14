@@ -28,33 +28,14 @@ class JeditableAjax extends ControllerBase {
       case 'node':
 
         $node = Node::load($id);
-//set value for field
-        $node->body->value = $value;
-//        $node->body->format = 'full_html';
-//field tag
-//        $node->field_tags = [1];
-//field image
-//        $field_image = array(
-//          'target_id' => $fileID,
-//          'alt' => "My 'alt'",
-//          'title' => "My 'title'",
-//        );
-//        $node->field_image = $field_image;
+        //set value for field
+        $node->{$field_name}->value = $value;
 
-//save to update node
+        //save to update node
         $node->save();
         return new Response($value);
 
-//        print "inside node";
-//        $node = node_load($id);
-//        if(!node_access('update', $node)) { // check to see that current user has update permissions on the node
-//          $value = 'access denied'; // this is the value that will be returned, but no updates made
-//        } else {
-////         drupal_set_message(var_export($node->{$field_name},true));
-//          $node->{$field_name} = $value;
-//          $node->revision = variable_get('jeditable_create_new_revisions', false);
-//          node_save($node);
-//        }
+
         break;
 
       case 'user':
