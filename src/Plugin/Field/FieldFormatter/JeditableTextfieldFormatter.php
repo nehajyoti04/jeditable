@@ -12,16 +12,16 @@ use Drupal\Core\Field\FieldItemListInterface;
  *   id = "jeditable_textfield",
  *   label = @Translation("jEditable textfield"),
  *   field_types = {
+ *     "list_text",
  *     "text",
  *     "text_long",
  *     "text_with_summary",
- *   "number_integer",
- *    "number_decimal",
- *    "number_float",
- *    "list_boolean",
- *    "list_integer",
- *   "list_float",
- *   "list_text",
+ *     "number_integer",
+ *     "number_decimal",
+ *     "number_float",
+ *     "list_boolean",
+ *     "list_integer",
+ *     "list_float",
  *   },
  *   quickedit = {
  *     "editor" = "plain_text"
@@ -55,7 +55,7 @@ class JeditableTextfieldFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = array();
 
-    $node = \Drupal::routeMatch()->getParameter('node');
+//    $node = \Drupal::routeMatch()->getParameter('node');
 //    dpm("node");
 //    dpm($node);
 
