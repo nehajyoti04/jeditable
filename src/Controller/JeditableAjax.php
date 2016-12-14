@@ -4,6 +4,9 @@ namespace Drupal\jeditable\Controller;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Controller\ControllerBase;
+//use Drupal\node\Plugin\views\field\Node;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Entity;
 use Symfony\Component\HttpFoundation\Response;
 
 class JeditableAjax extends ControllerBase {
@@ -23,6 +26,25 @@ class JeditableAjax extends ControllerBase {
 
     switch($type) {
       case 'node':
+
+        $node = Node::load($id);
+//set value for field
+        $node->body->value = $value;
+//        $node->body->format = 'full_html';
+//field tag
+//        $node->field_tags = [1];
+//field image
+//        $field_image = array(
+//          'target_id' => $fileID,
+//          'alt' => "My 'alt'",
+//          'title' => "My 'title'",
+//        );
+//        $node->field_image = $field_image;
+
+//save to update node
+        $node->save();
+        return new Response($value);
+
 //        print "inside node";
 //        $node = node_load($id);
 //        if(!node_access('update', $node)) { // check to see that current user has update permissions on the node

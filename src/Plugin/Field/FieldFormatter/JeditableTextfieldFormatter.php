@@ -55,7 +55,15 @@ class JeditableTextfieldFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = array();
 
+    $node = \Drupal::routeMatch()->getParameter('node');
+//    dpm("node");
+//    dpm($node);
 
+    $node_id = \Drupal::routeMatch()->getRawParameter('node');
+//    dpm("node id");
+//    dpm($node_id);
+//dpm("this");
+//    dpm($this);
 //    $recursive_render_id = $items->getFieldDefinition()->getTargetEntityTypeId()
 //      . $items->getFieldDefinition()->getTargetBundle()
 //      . $items->getName()
@@ -101,6 +109,8 @@ class JeditableTextfieldFormatter extends FormatterBase {
 //    return "inside theme function--- milstone 1 of jeditable done.";
 //    return '<span id="' . $entity_type . '-' . $id . '-' . $field['field_name'] . '-' . $widget_type . '-' . $variables['delta'] . '" class="jeditable jeditable-textfield">' . $element['value'] . '</span>';
     foreach ($items as $delta => $item) {
+//      dpm("item");
+//      dpm($item);
 
 
 //      dpm("taget bundle type");
@@ -129,7 +139,8 @@ class JeditableTextfieldFormatter extends FormatterBase {
 
 //      return '<span id="' . $entity_type . '-' . $id . '-' . $field['field_name'] . '-' .
 //      $widget_type . '-' . $variables['delta'] . '" class="jeditable jeditable-textfield">'
-      $id = "test_id";
+//      $id = "test_id";
+      $id = $node_id;
       $prefix = '<span id = "'.$entity_type . '-' .$id. '-' .$field_name. '-'.$widget .'-'.$delta.'" class="jeditable jeditable-textfield">';
 //      $markup = '<span class="jeditable jeditable-textfield">' . $item->value. '</span>';
 //      $item->value = "hello";
