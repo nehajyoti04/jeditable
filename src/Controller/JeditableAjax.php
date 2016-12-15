@@ -13,28 +13,24 @@ class JeditableAjax extends ControllerBase {
 
   public function jeditable_ajax_save(){
 
-//    print "hello";
-
-
     $array = explode('-', $_POST['id']);
     list($type, $id, $field_name, $field_type, $delta) = $array;
     $value = Html::escape($_POST['value']);
 
-    $message = "hello";
-    $message = $array[0];
-    \Drupal::logger('my_module')->notice($message);
+//    $message = "hello";
+//    $message = $array[0];
+//    \Drupal::logger('my_module')->notice($message);
 
     switch($type) {
       case 'node':
 
         $node = Node::load($id);
-        //set value for field
+        //Set value for field
         $node->{$field_name}->value = $value;
 
-        //save to update node
+        //Save to update node.
         $node->save();
         return new Response($value);
-
 
         break;
 
@@ -85,7 +81,7 @@ class JeditableAjax extends ControllerBase {
 //    exit();
 
 
-    return new Response('Hello, world');
+//    return new Response('Hello, world');
 //    return "jeditable,ajax save return value";
 
 //    return $this->render(
@@ -101,7 +97,7 @@ class JeditableAjax extends ControllerBase {
 
   }
 
-  public function jeditable_ajax_load(){
-
-  }
+//  public function jeditable_ajax_load(){
+//
+//  }
 }
