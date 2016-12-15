@@ -56,38 +56,7 @@ class JeditableTextfieldFormatter extends FormatterBase {
 //    dpm($node);
 
     $node_id = \Drupal::routeMatch()->getRawParameter('node');
-//    dpm("node id");
-//    dpm($node_id);
-//dpm("this");
-//    dpm($this);
-//    $recursive_render_id = $items->getFieldDefinition()->getTargetEntityTypeId()
-//      . $items->getFieldDefinition()->getTargetBundle()
-//      . $items->getName()
-//      . $entity->id();
 
-//
-//dpm("taget bundle type");
-//    dpm($items->getFieldDefinition()->getTargetBundle());
-//    dpm("target entity type id");
-//    dpm($items->getFieldDefinition()->getTargetEntityTypeId());
-//    dpm("item get name ");
-//    dpm($items->getName());
-
-//    foreach ($this->getEntitiesToView($items, $langcode) as $delta => $entity) {
-//      if ($entity->id()) {
-//        dpm("for each id");
-//        dpm($entity->id());
-//        $elements[$delta] = array(
-//          '#plain_text' => $entity->id(),
-//          // Create a cache tag entry for the referenced entity. In the case
-//          // that the referenced entity is deleted, the cache for referring
-//          // entities must be cleared.
-//          '#cache' => array(
-//            'tags' => $entity->getCacheTags(),
-//          ),
-//        );
-//      }
-//    }
 
 
 
@@ -99,24 +68,7 @@ class JeditableTextfieldFormatter extends FormatterBase {
 
 
 
-
-    // The ProcessedText element already handles cache context & tag bubbling.
-    // @see \Drupal\filter\Element\ProcessedText::preRenderText()
-//    return "inside theme function--- milstone 1 of jeditable done.";
-//    return '<span id="' . $entity_type . '-' . $id . '-' . $field['field_name'] . '-' . $widget_type . '-' . $variables['delta'] . '" class="jeditable jeditable-textfield">' . $element['value'] . '</span>';
     foreach ($items as $delta => $item) {
-//      dpm("item");
-//      dpm($item);
-
-
-//      dpm("taget bundle type");
-//      dpm($item->getFieldDefinition()->getTargetBundle());
-//      dpm("target entity type");
-//      dpm($item->getFieldDefinition()->getTargetEntityTypeId());
-//      dpm("item get name ");
-//      dpm($items->getName());
-//      dpm("widget");
-//      dpm($item->getFieldDefinition()->getType());
 
       $bundle = $item->getFieldDefinition()->getTargetBundle();
       $entity_type = $item->getFieldDefinition()->getTargetEntityTypeId();
@@ -125,92 +77,35 @@ class JeditableTextfieldFormatter extends FormatterBase {
 
 
 
-//      dpm("ID");
-//      dpm($item->getFieldDefinition()->getId());
-
-
-
-//      dpm("item");
-//      dpm($item->getFieldDefinition());
-
-//      return '<span id="' . $entity_type . '-' . $id . '-' . $field['field_name'] . '-' .
-//      $widget_type . '-' . $variables['delta'] . '" class="jeditable jeditable-textfield">'
-//      $id = "test_id";
       $id = $node_id;
       $prefix = '<span id = "'.$entity_type . '-' .$id. '-' .$field_name. '-'.$widget .'-'.$delta.'" class="jeditable jeditable-textfield">';
-//      $markup = '<span class="jeditable jeditable-textfield">' . $item->value. '</span>';
-//      $item->value = "hello";
-//      $markup = '<div id="test" class="jeditable jeditable-textfield">' . $item->value. '</div>';
-//      $markup = "<span class='hello'> hello123 </span>";
       $elements[$delta] = array(
         '#type' => 'processed_text',
-//        '#text' => $item->value,
-//      '#prefix' => '<span id="entity_type-test_id-test_field_name-test_widget_name" class="jeditable jeditable-textfield">',
         '#prefix' => $prefix,
         '#text' =>  $item->value,
         '#suffix' => '</span>',
         '#format' => $item->format,
         '#langcode' => $item->getLangcode(),
       );
+      $elements[$delta]['#attached']['library'][] = 'jeditable/jeditable.admin';
     }
-
-//    return "hello123";
-    $theme = array(
-      '#theme' =>'jeditable_formatter_jeditable',
-      );
-//    dpm("theme 1");
-//    dpm($theme);
-//return $theme;
-    $theme = [
-      '#theme' => 'jeditable_formatter_jeditable',
-      ];
-    $render = $theme;
-//    dpm("theme");
-//    dpm($render);
-//    dpm("elements");
-//    dpm($elements);
-    foreach ($items as $delta => $item) {
-//      $field_delta = isset($display['views_field']) ? $display['views_field']->options['delta_offset'] + $delta : $delta;
-//      $elements[$delta] = array(
-//        '#markup' => theme('jeditable_formatter_jeditable', array(
-//          'element' => $item,
-//          'field' => $instance,
-//          'entity' => $entity,
-//          'entity_type' => $entity_type,
-//          'widget_type' => $widget_type,
-//          'delta' => $field_delta
-//        )),
+//    $theme = array(
+//      '#theme' =>'jeditable_formatter_jeditable',
 //      );
 //
-//
-//      if (user_access('use jeditable')) {
-    $elements[$delta]['#attached']['library'][] = 'jeditable/jeditable.admin';
+//    $theme = [
+//      '#theme' => 'jeditable_formatter_jeditable',
+//      ];
+//    $render = $theme;
 
-//        $elements[$delta]['#attached'] = array(
-//          'js' => array(
-//            $path . '/jquery.jeditable.mini.js',
-//            $path . '/drupal_jeditable.js',
-//          ),
-//          'css' => array(
-//            $path . '/jeditable.css',
-//          ),
-//        );
-//      }
-    }
-//
-//
-//    $element['trim_length'] = array(
-//      '#title' => t('Trimmed limit'),
-//      '#type' => 'number',
-//      '#field_suffix' => t('characters'),
-//      '#default_value' => $this->getSetting('trim_length'),
-//      '#description' => t('If the summary is not set, the trimmed %label field will end at the last full sentence before this character limit.', array('%label' => $this->fieldDefinition->getLabel())),
-//      '#min' => 1,
-//      '#required' => TRUE,
-//    );
+//    foreach ($items as $delta => $item) {
+
+
+//    $elements[$delta]['#attached']['library'][] = 'jeditable/jeditable.admin';
+
+//    }
 
     return $elements;
   }
-
 
 }
