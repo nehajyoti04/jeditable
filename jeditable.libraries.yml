@@ -1,8 +1,5 @@
 jeditable.admin:
   version: VERSION
-  css:
-    theme:
-      css/jeditable.css: {}
   js:
     js/jquery.jeditable.mini.js: {}
     js/drupal_jeditable.js: {}

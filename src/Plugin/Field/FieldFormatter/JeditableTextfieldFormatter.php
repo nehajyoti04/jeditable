@@ -19,9 +19,6 @@ use Drupal\Core\Field\FieldItemListInterface;
  *     "number_decimal",
  *     "number_float",
  *   },
- *   quickedit = {
- *     "editor" = "plain_text"
- *   }
  * )
  */
 class JeditableTextfieldFormatter extends FormatterBase {
@@ -34,16 +31,7 @@ class JeditableTextfieldFormatter extends FormatterBase {
       'trim_length' => '600',
     ) + parent::defaultSettings();
 
-//    return array(
-//        'settings' => array(
-//          'fallback_format' => NULL,
-//          'fallback_settings' => array(),
-//          'empty_text' => '--',
-//        ),
-//      );
   }
-
-
 
   /**
    * {@inheritdoc}
@@ -51,22 +39,7 @@ class JeditableTextfieldFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = array();
 
-//    $node = \Drupal::routeMatch()->getParameter('node');
-//    dpm("node");
-//    dpm($node);
-
-    $node_id = \Drupal::routeMatch()->getRawParameter('node');
-
-
-
-
-//    $elements[$delta] = [
-//      '#type' => 'inline_template',
-//      '#template' => '{{ value|nl2br }}',
-//      '#context' => ['value' => $item->value],
-//    ];
-
-
+    $id = \Drupal::routeMatch()->getRawParameter('node');
 
     foreach ($items as $delta => $item) {
 
@@ -75,9 +48,6 @@ class JeditableTextfieldFormatter extends FormatterBase {
       $field_name = $items->getName();
       $widget = $item->getFieldDefinition()->getType();
 
-
-
-      $id = $node_id;
       $prefix = '<span id = "'.$entity_type . '-' .$id. '-' .$field_name. '-'.$widget .'-'.$delta.'" class="jeditable jeditable-textfield">';
       $elements[$delta] = array(
         '#type' => 'processed_text',
@@ -89,21 +59,6 @@ class JeditableTextfieldFormatter extends FormatterBase {
       );
       $elements[$delta]['#attached']['library'][] = 'jeditable/jeditable.admin';
     }
-//    $theme = array(
-//      '#theme' =>'jeditable_formatter_jeditable',
-//      );
-//
-//    $theme = [
-//      '#theme' => 'jeditable_formatter_jeditable',
-//      ];
-//    $render = $theme;
-
-//    foreach ($items as $delta => $item) {
-
-
-//    $elements[$delta]['#attached']['library'][] = 'jeditable/jeditable.admin';
-
-//    }
 
     return $elements;
   }
