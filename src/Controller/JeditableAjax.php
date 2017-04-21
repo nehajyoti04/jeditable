@@ -8,10 +8,12 @@ use Drupal\node\Entity\Node;
 use Drupal\Core\Entity;
 use Symfony\Component\HttpFoundation\Response;
 
+
 class JeditableAjax extends ControllerBase {
 
   public function jeditable_ajax_save(){
     $array = explode('-', $_POST['id']);
+    // Fieldtype and $delta can used when expanding the scope of the module.
     list($type, $id, $field_name, $field_type, $delta) = $array;
     $value = Html::escape($_POST['value']);
 

@@ -1,41 +1,50 @@
-jEditable inline editing module
+CONTENTS OF THIS FILE
+---------------------
 
+ * Introduction
+ * Installation
+ * Configuration
+ * Future Work
+ * Maintainers
 
-Installation:
+INTRODUCTION
+------------
 
-1. Place this module in your favorite modules directory (i.e., sites/all/modules/)
-2. Download the jEditable jQuery plugin from http://www.appelsiini.net/download/jquery.jeditable.mini.js
-     If you're in *nix and in the module directory, you can use this:
-     wget http://www.appelsiini.net/download/jquery.jeditable.mini.js
-3. Enable the module
-     If you're at the command line, then hopefully you have drush you can use:
-     drush en jeditable
-4. Turn on the "use jeditable" permission for all rolls you want to have access to jeditable operations.
-     The module respects basic node access, so saving using jeditable will only work if the user has "update" permissions on the node.
-     However, if they don't have update permissions, they will still get the jeditable input forms, so this needs some thought for your application.
-5. Go to the "display settings" of your node, or into the display settings for a view with fields in it and
-     enable the jEditable textfield, jEditable textarea, jEditable datetime or jEditable noderefence fields as appropriate
-6. Finally, load a node, "click to edit", and enjoy!
+Jeditable(jEditable inline editing module) provides "click to edit" functions for  "text", "text_long", "text_with_summary", "number_integer",
+"number_decimal", "number_float" for nodes.
 
+So what is this good for? it provides a very quick and easy way to update the things they need to change without having
+to edit specific fields without having to switch to the full-blown node editor.
 
+INSTALLATION
+--------------------------
 
-Instructions for Workflow integration
+Install the module like any other Drupal module.
+To make use of it you will need to create a GitHub application at
+https://github.com/account/applications/new.
+It is important to set the correct URLs here or else the module won´t work.
+Main URL: http://<yourdomain.com>/
+Callback URL: http://<yourdomain.com>/github/register/create
 
-If you have the workflow module, you can use jeditable to change workflow statuses. It won't show up anywhere
-by default, but you can place it in .tpl.php files by using the following theme function:
+CONFIGURATION
+--------------------------
 
-theme('jeditable_workflow', $node);
+1. Turn on the "use jeditable" permission for all rolls you want to have access to jeditable operations.
+The module respects basic node access, so saving using jeditable will only work if the user has "update" permissions on the node.
+However, if they don't have update permissions, they will still get the jeditable input forms, so this needs some thought for your application.
 
-You can also use the computed_field module to get this to show up as a field in views and elsewhere. Use
-the following snippets.
+2. Go to the "display settings" of your node, or into the display settings for a view with fields in it and enable the
+jEditable textfield, jEditable textarea, jEditable datetime or jEditable noderefence fields as appropriate.
+You can also use the computed_field module to get this to show up as a field in views and elsewhere.
 
-For "Computed Code":
-$node_field[0]['value'] = workflow_get_state_name($node->workflow);
+3. Finally, load a node, "click to edit", and enjoy!
 
-For "Display format":
-$display = theme('jeditable_workflow', $element['#node']);
+FUTURE WORK
+---------------------
+* Jeditable display for select list, checkboxes.
+* Jeditable display for workflow mode.
 
-For Data type, select "varchar" and set data length to 60 (or whatever you set as maximum length for workflow state names)
+Maintainers
+---------------------
 
-What this will do is store the workflow state name in the database so that you can use this in views and sort by state name.
-What is then displayed is themed jeditable select drop down.
+nehajyoti (Jyoti Bohra)

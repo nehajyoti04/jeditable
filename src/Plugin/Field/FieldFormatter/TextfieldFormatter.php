@@ -21,7 +21,7 @@ use Drupal\Core\Field\FieldItemListInterface;
  *   },
  * )
  */
-class JeditableTextfieldFormatter extends FormatterBase {
+class TextfieldFormatter extends FormatterBase {
 
   /**
    * {@inheritdoc}

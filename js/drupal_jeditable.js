@@ -5,8 +5,7 @@
                 indicator : 'Saving...',
                 tooltip   : 'Click to edit...',
                 cancel    : 'Cancel',
-                submit    : 'Save',
-                style     : 'display: inline; min-width: 100px;'
+                submit    : 'Save'
             });
         }
     };

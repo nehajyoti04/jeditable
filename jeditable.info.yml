@@ -5,3 +5,4 @@ dependencies:
 package: 'User Interface'
 core: 8.x
 type: module
+configure: jeditable.admin_settings

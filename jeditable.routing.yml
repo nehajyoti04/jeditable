@@ -6,10 +6,10 @@ jeditable.ajax_save:
   requirements:
     _permission: 'use jeditable'
 #jeditable.ajax_load:
-#  path: /jeditable/ajax/load
+#  path: '/jeditable/ajax/load'
 #  defaults:
 #    _title: 'Load field'
-#    _controller: '\Drupal\jeditable\Controller\DefaultController::_jeditable_ajax_load'
+#    _controller: '\Drupal\jeditable\Controller\JeditableAjax::_jeditable_ajax_load'
 #  requirements:
 #    _permission: 'use jeditable'
 jeditable.admin_settings:
