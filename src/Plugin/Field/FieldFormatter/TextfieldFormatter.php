@@ -48,11 +48,11 @@ class TextfieldFormatter extends FormatterBase {
       $field_name = $items->getName();
       $widget = $item->getFieldDefinition()->getType();
 
-      $prefix = '<span id = "'.$entity_type . '-' .$id. '-' .$field_name. '-'.$widget .'-'.$delta.'" class="jeditable jeditable-textfield">';
+      $prefix = '<span id = "' . $entity_type . '-' . $id . '-' . $field_name . '-' . $widget . '-' . $delta . '" class="jeditable jeditable-textfield">';
       $elements[$delta] = array(
         '#type' => 'processed_text',
         '#prefix' => $prefix,
-        '#text' =>  $item->value,
+        '#text' => $item->value,
         '#suffix' => '</span>',
         '#format' => $item->format,
         '#langcode' => $item->getLangcode(),

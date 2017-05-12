@@ -6,7 +6,12 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 
-class JeditableAdminSettings extends ConfigFormBase {
+/**
+ * Class AdminSettings.
+ *
+ * @package Drupal\jeditable\Form
+ */
+class AdminSettings extends ConfigFormBase {
 
   /**
    * {@inheritdoc}
@@ -22,13 +27,16 @@ class JeditableAdminSettings extends ConfigFormBase {
     return ['jeditable.settings'];
   }
 
-  public function buildForm(array $form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  /**
+   * {@inheritdoc}
+   */
+  public function buildForm(array $form, FormStateInterface $form_state) {
 
     $form['jeditable_empty_placeholder'] = [
       '#type' => 'textfield',
-      '#title' => t('Empty field placeholder'),
-      '#default_value' => \Drupal::config('jeditable.settings')->get('jeditable_empty_placeholder'),
-      '#description' => t('Text, that will be shown if field is empty'),
+      '#title' => $this->t('Empty field placeholder'),
+      '#default_value' => $this->config('jeditable.settings')->get('jeditable_empty_placeholder'),
+      '#description' => $this->t('Text, that will be shown if field is empty'),
     ];
 
     return parent::buildForm($form, $form_state);
@@ -51,6 +59,5 @@ class JeditableAdminSettings extends ConfigFormBase {
 
     parent::submitForm($form, $form_state);
   }
-
 
 }
